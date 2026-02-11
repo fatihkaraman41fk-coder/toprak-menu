@@ -120,3 +120,34 @@ body{
   padding: 16px 0 24px;
   text-align:center;
 }
+
+
+.hero{
+  position: relative;
+  height: 240px;
+  background: url("images/header.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__overlay{
+  text-align: center;
+  background: rgba(0,0,0,0.45);
+  padding: 20px 30px;
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+}
+
+.hero h1{
+  margin:0;
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.hero p{
+  margin-top:6px;
+  font-size:14px;
+  color:#eaeaea;
+}
+
