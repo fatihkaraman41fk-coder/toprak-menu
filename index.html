@@ -389,5 +389,25 @@
       <div>© Toprak Bakery House</div>
     </footer>
   </main>
+
+  <script>
+  const topbar = document.querySelector('.topbar');
+  const hero = document.querySelector('.hero');
+
+  const onScroll = () => {
+    const y = window.scrollY || 0;
+
+    // Hero bittiğinde topbar küçülsün
+    if (hero && y > Math.max(40, hero.offsetHeight - 120)) {
+      topbar.classList.add('is-compact');
+    } else {
+      topbar.classList.remove('is-compact');
+    }
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>
+
 </body>
 </html>
