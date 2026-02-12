@@ -429,12 +429,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const dlg = document.getElementById('lightbox');
   const dlgImg = document.getElementById('lightboxImg');
 
-  function openLightbox(src, alt) {
-    dlgImg.src = src;
-    dlgImg.alt = alt || 'Ürün fotoğrafı';
-    if (typeof dlg.showModal === 'function') dlg.showModal();
-    else dlg.setAttribute('open', ''); // çok eski tarayıcı fallback
-  }
+ function openLightbox(src, alt, title, price) {
+  dlgImg.src = src;
+  dlgImg.alt = alt || 'Ürün fotoğrafı';
+
+  document.getElementById('lightboxTitle').textContent = title || '';
+  document.getElementById('lightboxPrice').textContent = price || '';
+
+  if (typeof dlg.showModal === 'function') dlg.showModal();
+  else dlg.setAttribute('open', '');
+}
+
 
   function closeLightbox() {
     dlg.close?.();
@@ -454,16 +459,26 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!clickedInside) closeLightbox();
   });
 
+    
   // ESC ile kapat
   dlg.addEventListener('cancel', (e) => { e.preventDefault(); closeLightbox(); });
 
+
+    
   // Ürün görsellerine tıklama (class ile)
-  document.addEventListener('click', (e) => {
-    const img = e.target.closest('img.item__img');
-    if (!img) return;
-    e.preventDefault();
-    openLightbox(img.src, img.alt);
-  });
+ document.addEventListener('click', (e) => {
+  const img = e.target.closest('img.item__img');
+  if (!img) return;
+
+  e.preventDefault();
+
+  const item = img.closest('.item');
+  const title = item.querySelector('.item__name')?.textContent;
+  const price = item.querySelector('.item__price')?.textContent;
+
+  openLightbox(img.src, img.alt, title, price);
+});
+
 </script>
 
 
