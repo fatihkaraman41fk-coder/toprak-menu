@@ -125,11 +125,12 @@ body{
 .hero{
   position: relative;
   height: 320px;
-  background: url("images/header.jpg") center/cover no-repeat;
+  background: url("images/header.jpg") center/cover fixed no-repeat;
   display: flex;
   align-items: flex-end;
   padding: 24px;
 }
+
 
 .hero::after{
   content:"";
