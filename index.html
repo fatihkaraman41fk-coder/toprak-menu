@@ -410,5 +410,54 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 
 
+  <!-- Lightbox (Popup) -->
+<dialog id="lightbox" class="lightbox">
+  <button class="lightbox__close" aria-label="Kapat">✕</button>
+  <img id="lightboxImg" class="lightbox__img" alt="" />
+</dialog>
+
+
+  <script>
+  const dlg = document.getElementById('lightbox');
+  const dlgImg = document.getElementById('lightboxImg');
+
+  function openLightbox(src, alt) {
+    dlgImg.src = src;
+    dlgImg.alt = alt || 'Ürün fotoğrafı';
+    if (typeof dlg.showModal === 'function') dlg.showModal();
+    else dlg.setAttribute('open', ''); // çok eski tarayıcı fallback
+  }
+
+  function closeLightbox() {
+    dlg.close?.();
+    dlg.removeAttribute('open');
+    dlgImg.src = '';
+  }
+
+  // Kapat butonu
+  dlg.querySelector('.lightbox__close').addEventListener('click', closeLightbox);
+
+  // Arka plana tıklayınca kapat
+  dlg.addEventListener('click', (e) => {
+    const rect = dlg.getBoundingClientRect();
+    const clickedInside =
+      e.clientX >= rect.left && e.clientX <= rect.right &&
+      e.clientY >= rect.top && e.clientY <= rect.bottom;
+    if (!clickedInside) closeLightbox();
+  });
+
+  // ESC ile kapat
+  dlg.addEventListener('cancel', (e) => { e.preventDefault(); closeLightbox(); });
+
+  // Ürün görsellerine tıklama (class ile)
+  document.addEventListener('click', (e) => {
+    const img = e.target.closest('img.item__img');
+    if (!img) return;
+    e.preventDefault();
+    openLightbox(img.src, img.alt);
+  });
+</script>
+
+
 </body>
 </html>
