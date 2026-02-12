@@ -413,7 +413,15 @@ document.addEventListener('DOMContentLoaded', () => {
   <!-- Lightbox (Popup) -->
 <dialog id="lightbox" class="lightbox">
   <button class="lightbox__close" aria-label="Kapat">✕</button>
-  <img id="lightboxImg" class="lightbox__img" alt="" />
+
+  <div class="lightbox__content">
+    <img id="lightboxImg" class="lightbox__img" alt="" />
+
+    <div class="lightbox__meta">
+      <div id="lightboxTitle" class="lightbox__title"></div>
+      <div id="lightboxPrice" class="lightbox__price"></div>
+    </div>
+  </div>
 </dialog>
 
 
