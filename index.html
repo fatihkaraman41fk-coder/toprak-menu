@@ -390,15 +390,14 @@
     </footer>
   </main>
 
-  <script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
   const topbar = document.querySelector('.topbar');
-  const hero = document.querySelector('.hero');
+
+  if (!topbar) return;
 
   const onScroll = () => {
-    const y = window.scrollY || 0;
-
-    // Hero bittiğinde topbar küçülsün
-    if (hero && y > Math.max(40, hero.offsetHeight - 120)) {
+    if (window.scrollY > 40) {
       topbar.classList.add('is-compact');
     } else {
       topbar.classList.remove('is-compact');
@@ -407,7 +406,9 @@
 
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+});
 </script>
+
 
 </body>
 </html>
