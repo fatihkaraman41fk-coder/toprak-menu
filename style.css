@@ -1,48 +1,38 @@
 :root{
-  /* ANA ZEMİN */
   --bg:#f3f3f3;
-
-  /* KARTLAR */
   --card:#ffffff;
 
-  /* YAZILAR */
   --text:#2b2b2b;
   --muted:#7a7a7a;
 
-  /* BORDER */
   --line:#e2e2e2;
   --line-2:#dddddd;
 
-  /* ALTIN VURGU (sarı) */
---gold:#b8792f;
+  /* Toprak’a özel vurgu (Lulus sarısı değil) */
+  --gold:#c48a3a;
 
-  /* YÜZEYLER */
   --surface:#ffffff;
   --surface-2:#f7f7f7;
 
-  /* TOPBAR */
-  --topbar-bg: rgba(226,164,0,.95);
-  --topbar-bg-compact: rgba(226,164,0,.98);
+  --topbar-bg: rgba(255,255,255,.92);
+  --topbar-bg-compact: rgba(255,255,255,.96);
 
-  /* HERO */
   --hero-text:#ffffff;
   --badge-bg: rgba(255,255,255,0.25);
 
-  /* HERO KARARTMA */
   --hero-shade-strong: rgba(0,0,0,.45);
   --hero-shade-soft: rgba(0,0,0,.10);
 
-  /* HERO IŞIK SWEEP */
   --hero-sweep-1: rgba(255,255,255,0.12);
   --hero-sweep-2: rgba(255,255,255,0.22);
 
-  /* LIGHTBOX */
   --backdrop: rgba(0,0,0,.65);
   --close-border: rgba(255,255,255,.35);
   --close-bg: rgba(0,0,0,.35);
   --white:#ffffff;
-}
 
+  --topbar-h: 0px;
+}
 
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -51,6 +41,13 @@ body{
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   background:var(--bg);
   color:var(--text);
+}
+
+.notice{
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
+  margin-bottom: 10px;
 }
 
 /* HERO */
@@ -65,16 +62,7 @@ body{
   display: flex;
   align-items: flex-end;
   padding: 24px;
-  z-index: 0;
-
   overflow: hidden;
-  opacity: 0;
-  animation: heroReveal 1.4s cubic-bezier(0.22,1,0.36,1) forwards;
-  will-change: opacity;
-}
-
-@keyframes heroReveal{
-  to{ opacity: 1; transform: scale(1); }
 }
 
 .hero__overlay{
@@ -90,12 +78,6 @@ body{
     var(--hero-sweep-1) 60%,
     transparent 100%
   );
-  transform: translateX(-120%);
-  animation: lightSweep 2.6s ease-out forwards;
-  mix-blend-mode: screen;
-}
-@keyframes lightSweep{
-  to{ transform: translateX(120%); }
 }
 
 .hero::after{
@@ -124,28 +106,31 @@ body{
   letter-spacing:.5px;
 }
 
-.hero h1{
-  margin:0;
-  font-size:32px;
-  font-weight:900;
-  letter-spacing:.5px;
-}
-.hero p{
-  margin-top:6px;
-  font-size:15px;
-  color: var(--hero-text);
-}
+.hero h1{ margin:0; font-size:32px; font-weight:900; letter-spacing:.5px; color:#fff; }
+.hero p{ margin-top:6px; font-size:15px; color:#fff; }
 
 /* TOPBAR */
 .topbar{
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  position: relative;
+  z-index: 50;
   background: var(--topbar-bg);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
   padding: 14px 14px 10px;
   transition: padding 220ms ease, background 220ms ease;
+}
+
+/* ✅ hero geçince sabitle */
+.topbar.is-fixed{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+}
+
+body.has-fixed-topbar{
+  padding-top: var(--topbar-h, 0px);
 }
 
 .brand__title{
@@ -199,13 +184,9 @@ body{
 }
 
 .section{ margin: 18px 0 26px; }
-.section h2{
-  margin: 0 0 10px;
-  font-size: 18px;
-  letter-spacing: .2px;
-}
+.section h2{ margin: 0 0 10px; font-size: 18px; letter-spacing: .2px; }
 
-/* MENU ITEM (kart) */
+/* ITEM */
 .item{
   display:flex;
   align-items:center;
@@ -229,27 +210,10 @@ body{
   border: 1px solid var(--line-2);
 }
 
-.item__body{
-  min-width: 0;
-  flex: 1;
-}
-.item__name{
-  font-weight: 750;
-  font-size: 15px;
-}
-.item__desc{
-  margin-top: 4px;
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.25;
-}
-
-.item__price{
-  font-weight: 800;
-  font-size: 14px;
-  padding-left: 8px;
-  white-space: nowrap;
-}
+.item__body{ min-width: 0; flex: 1; }
+.item__name{ font-weight: 750; font-size: 15px; }
+.item__desc{ margin-top: 4px; font-size: 13px; color: var(--muted); line-height: 1.25; }
+.item__price{ font-weight: 800; font-size: 14px; padding-left: 8px; white-space: nowrap; }
 
 .footer{
   border-top: 1px solid var(--line);
@@ -259,21 +223,18 @@ body{
   text-align:center;
 }
 
-/* ✅ CUSTOM LIGHTBOX */
+/* LIGHTBOX */
 .lightbox{
   position: fixed;
   inset: 0;
   z-index: 9999;
-
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 16px;
-
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-
   transition: opacity 0.20s ease, visibility 0s linear 0.20s;
 }
 
@@ -291,24 +252,18 @@ body{
   opacity: 0;
   transition: opacity 0.20s ease;
 }
-.lightbox.is-open .lightbox__backdrop{
-  opacity: 1;
-}
+.lightbox.is-open .lightbox__backdrop{ opacity: 1; }
 
 .lightbox__panel{
   position: relative;
   width: min(92vw, 860px);
   background: transparent;
   z-index: 2;
-
   transform-origin: 50% 30%;
   transform: translateY(10px) scale(0.98);
   transition: transform 0.22s ease;
-  will-change: transform;
 }
-.lightbox.is-open .lightbox__panel{
-  transform: translateY(0) scale(1);
-}
+.lightbox.is-open .lightbox__panel{ transform: translateY(0) scale(1); }
 
 .lightbox__content{
   background: var(--surface);
@@ -332,20 +287,11 @@ body{
   justify-content: space-between;
   align-items:center;
   background: var(--surface);
-  color: var(--white);
+  color: var(--text);
 }
 
-.lightbox__title{
-  font-weight: 800;
-  font-size: 16px;
-  color: var(--white);
-}
-
-.lightbox__price{
-  font-weight: 900;
-  font-size: 16px;
-  color: var(--gold);
-}
+.lightbox__title{ font-weight: 800; font-size: 16px; color: var(--text); }
+.lightbox__price{ font-weight: 900; font-size: 16px; color: var(--gold); }
 
 .lightbox__close{
   position: absolute;
@@ -363,78 +309,4 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-}
-
-/* Reduce motion */
-@media (prefers-reduced-motion: reduce){
-  .hero,
-  .hero__overlay,
-  .topbar,
-  .brand__title,
-  .brand__sub,
-  .lightbox,
-  .lightbox__backdrop,
-  .lightbox__panel{
-    animation: none !important;
-    transition: none !important;
-    transform: none !important;
-  }
-}
-
-
-.hero h1{
-  color: #ffffff;
-}
-
-.hero p{
-  color: #ffffff;
-}
-
-
-/* POPUP YAZI DÜZELTME */
-.lightbox__title{
-  color:#2b2b2b;
-}
-
-
-/* ✅ TOPBAR KAYBOLMA FIX (Chrome/GitHub Pages) */
-.topbar{
-  position: -webkit-sticky !important;
-  position: sticky !important;
-  top: 0 !important;
-  z-index: 99999 !important;
-  transform: translateZ(0);
-  will-change: transform;
-}
-
-.hero, .hero__overlay{
-  transform: none !important;
-  will-change: auto !important;
-  backface-visibility: hidden;
-}
-
-
-.lightbox__meta{
-  color:#2b2b2b;
-}
-
-
-
-.topbar{ position: relative; }
-
-.topbar.is-fixed{
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 99999;
-}
-
-body.has-fixed-topbar{
-  padding-top: var(--topbar-h, 0px);
-}
-
-/* fixed olunca içerik alttan başlamasın diye boşluk */
-body.has-fixed-topbar{
-  padding-top: var(--topbar-h, 0px);
 }
