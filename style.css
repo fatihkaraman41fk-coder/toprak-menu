@@ -264,11 +264,12 @@ body{
 .lightbox.is-open .lightbox__panel{ transform: translateY(0) scale(1); }
 
 .lightbox__content{
-  background: #111114;
+  background: var(--card);
   border-radius: 18px;
   overflow: hidden;
-  border: 1px solid #2a2a2f;
+  border: 1px solid var(--line);
 }
+
 .lightbox__img{
   display: block;
   width: 100%;
@@ -282,10 +283,16 @@ body{
   display:flex;
   justify-content: space-between;
   align-items:center;
-  background: #111114;
-  color: #ffffff;
+  background: var(--card);
+  color: var(--text);
 }
-.lightbox__title{ font-weight: 800; font-size: 16px; color: #ffffff; }
+
+.lightbox__title{ 
+  font-weight: 800; 
+  font-size: 16px; 
+  color: var(--text); 
+}
+
 .lightbox__price{ font-weight: 900; font-size: 16px; color: var(--gold); }
 
 .lightbox__close{
