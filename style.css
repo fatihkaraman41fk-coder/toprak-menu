@@ -70,14 +70,19 @@ body{
   inset: 0;
   z-index: 1;
   pointer-events: none;
+
   background: linear-gradient(
     110deg,
     transparent 0%,
-    var(--hero-sweep-1) 40%,
-    var(--hero-sweep-2) 50%,
-    var(--hero-sweep-1) 60%,
+    rgba(245,196,107,0.10) 40%,
+    rgba(245,196,107,0.22) 50%,
+    rgba(245,196,107,0.10) 60%,
     transparent 100%
   );
+
+  transform: translateX(-120%);
+  animation: headerShine 6s ease-in-out infinite;
+  mix-blend-mode: screen;
 }
 
 .hero::after{
