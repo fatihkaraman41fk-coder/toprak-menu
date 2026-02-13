@@ -333,10 +333,17 @@ body{
   }
 }
 
-/* FORCE STICKY TOPBAR */
+/* ✅ TOPBAR her zaman görünür (sticky değil fixed) */
 .topbar{
-  position: sticky !important;
+  position: fixed !important;
   top: 0 !important;
-  z-index: 9999 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 99999 !important;
+}
+
+/* ✅ Fixed topbar içerikleri kapatmasın diye sayfayı aşağı it */
+body{
+  padding-top: 96px !important;
 }
 
