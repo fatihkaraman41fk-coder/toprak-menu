@@ -6,29 +6,6 @@
   <title>Toprak Bakery House • Menü</title>
 
   <style>
-    
-    /* Popup ilk durumda görünmesin */
-.lightbox{
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-/* Açılınca arka plan fade olsun */
-.lightbox.is-open{
-  opacity: 1;
-}
-
-/* Popup kutusu ilk durumda biraz küçük ve aşağıda */
-.lightbox__panel{
-  transform: translateY(10px) scale(0.98);
-  transition: transform 0.22s ease;
-}
-
-/* Açılınca yerine oturup büyüsün */
-.lightbox.is-open .lightbox__panel{
-  transform: translateY(0) scale(1);
-}
-
     :root{
       --bg:#0b0b0c;
       --card:#131316;
@@ -253,29 +230,57 @@
       text-align:center;
     }
 
-    /* ✅ CUSTOM LIGHTBOX */
+    /* ✅ CUSTOM LIGHTBOX (ANİMASYONLU + display:none YOK) */
     .lightbox{
       position: fixed;
       inset: 0;
       z-index: 9999;
-      display: none;
+
+      /* layout */
+      display: flex;
       align-items: center;
       justify-content: center;
       padding: 16px;
+
+      /* closed state */
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+
+      transition: opacity 0.20s ease, visibility 0s linear 0.20s;
     }
-    .lightbox.is-open{ display: flex; }
+
+    .lightbox.is-open{
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transition: opacity 0.20s ease, visibility 0s linear 0s;
+    }
 
     .lightbox__backdrop{
       position:absolute;
       inset:0;
       background: rgba(0,0,0,.75);
+      opacity: 0;
+      transition: opacity 0.20s ease;
+    }
+    .lightbox.is-open .lightbox__backdrop{
+      opacity: 1;
     }
 
+    /* Panel: fade+zoom hissi */
     .lightbox__panel{
       position: relative;
       width: min(92vw, 860px);
       background: transparent;
       z-index: 2;
+
+      transform: translateY(10px) scale(0.98);
+      transition: transform 0.22s ease;
+      will-change: transform;
+    }
+    .lightbox.is-open .lightbox__panel{
+      transform: translateY(0) scale(1);
     }
 
     .lightbox__content{
@@ -331,6 +336,13 @@
       display:flex;
       align-items:center;
       justify-content:center;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .lightbox, .lightbox__backdrop, .lightbox__panel{
+        transition: none !important;
+        transform: none !important;
+      }
     }
   </style>
 </head>
@@ -839,15 +851,6 @@
         if (e.key === 'Escape' && lb.classList.contains('is-open')) close();
       });
     });
-    document.addEventListener("click", function(){
-  const lb = document.getElementById("lightbox");
-  if(!lb) return;
-
-  setTimeout(function(){
-    lb.classList.toggle("is-open", lb.getAttribute("aria-hidden") === "false");
-  }, 10);
-});
-
   </script>
 
 </body>
