@@ -257,6 +257,35 @@
         if (e.key === 'Escape' && lb.classList.contains('is-open')) close();
       });
     });
+
+
+    // ✅ GARANTİ: hero bitince topbar sabitlenir (fixed)
+document.addEventListener('DOMContentLoaded', () => {
+  const topbar = document.querySelector('.topbar');
+  const hero = document.querySelector('.hero');
+  if (!topbar || !hero) return;
+
+  const syncTopbarH = () => {
+    document.documentElement.style.setProperty('--topbar-h', topbar.offsetHeight + 'px');
+  };
+
+  const onScroll = () => {
+    const heroBottom = hero.offsetHeight;
+    if (window.scrollY >= heroBottom) {
+      topbar.classList.add('is-fixed');
+      document.body.classList.add('has-fixed-topbar');
+    } else {
+      topbar.classList.remove('is-fixed');
+      document.body.classList.remove('has-fixed-topbar');
+    }
+  };
+
+  syncTopbarH();
+  window.addEventListener('resize', syncTopbarH);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+});
+
   </script>
 
 </body>
