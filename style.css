@@ -430,3 +430,11 @@ body.has-fixed-topbar{
     0 0 0 2px rgba(245,196,107,0.55),
     0 0 10px rgba(245,196,107,0.45);
 }
+
+/* ✅ Popup açıkken X sürekli yansın */
+.lightbox.is-open .lightbox__close{
+  box-shadow:
+    0 0 0 2px rgba(245,196,107,0.45),
+    0 0 12px rgba(245,196,107,0.35);
+}
+
