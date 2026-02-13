@@ -99,7 +99,7 @@ body{
 
 /* TOPBAR */
 .topbar{
-  position: fixed;   /* sticky yerine fixed */
+  position: sticky;  /* sticky yerine fixed */
   top: 0;
   left: 0;
   right: 0;
