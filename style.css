@@ -1,32 +1,48 @@
 :root{
-  --bg:#0a0a0a;
-  --card:#14110d;
-  --text:#f4f2ee;
-  --muted:#c6c0b6;
-  --line:#2a241c;
-  --gold:#d8a24a;
+  /* ANA ZEMİN */
+  --bg:#f3f3f3;
 
-  --surface:#12100e;
-  --surface-2:#0f0d0b;
-  --line-2:#2f281f;
+  /* KARTLAR */
+  --card:#ffffff;
 
-  --topbar-bg: rgba(10,10,10,.92);
-  --topbar-bg-compact: rgba(10,10,10,.96);
+  /* YAZILAR */
+  --text:#2b2b2b;
+  --muted:#7a7a7a;
 
-  --hero-text:#f0ede7;
-  --badge-bg: rgba(216,162,74,0.18);
+  /* BORDER */
+  --line:#e2e2e2;
+  --line-2:#dddddd;
 
-  --hero-shade-strong: rgba(0,0,0,.78);
-  --hero-shade-soft: rgba(0,0,0,.18);
+  /* ALTIN VURGU (LULUS sarısı) */
+  --gold:#e2a400;
 
-  --hero-sweep-1: rgba(216,162,74,0.07);
-  --hero-sweep-2: rgba(216,162,74,0.16);
+  /* YÜZEYLER */
+  --surface:#ffffff;
+  --surface-2:#f7f7f7;
 
-  --backdrop: rgba(0,0,0,.78);
-  --close-border: rgba(255,255,255,.22);
-  --close-bg: rgba(0,0,0,.42);
+  /* TOPBAR */
+  --topbar-bg: rgba(226,164,0,.95);
+  --topbar-bg-compact: rgba(226,164,0,.98);
+
+  /* HERO */
+  --hero-text:#ffffff;
+  --badge-bg: rgba(255,255,255,0.25);
+
+  /* HERO KARARTMA */
+  --hero-shade-strong: rgba(0,0,0,.45);
+  --hero-shade-soft: rgba(0,0,0,.10);
+
+  /* HERO IŞIK SWEEP */
+  --hero-sweep-1: rgba(255,255,255,0.12);
+  --hero-sweep-2: rgba(255,255,255,0.22);
+
+  /* LIGHTBOX */
+  --backdrop: rgba(0,0,0,.65);
+  --close-border: rgba(255,255,255,.35);
+  --close-bg: rgba(0,0,0,.35);
   --white:#ffffff;
 }
+
 
 *{box-sizing:border-box}
 html,body{height:100%}
