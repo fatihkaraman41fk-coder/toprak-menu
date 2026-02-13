@@ -417,3 +417,21 @@ body{
 .lightbox__meta{
   color:#2b2b2b;
 }
+
+
+
+/* ✅ GARANTİ: hero bittikten sonra topbar fixed olur */
+.topbar{ position: relative; }
+
+.topbar.is-fixed{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+}
+
+/* fixed olunca içerik alttan başlamasın diye boşluk */
+body.has-fixed-topbar{
+  padding-top: var(--topbar-h, 0px);
+}
