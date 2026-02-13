@@ -1,37 +1,30 @@
 :root{
-  /* Ana tema */
-  --bg:#0b0b0c;
-  --card:#131316;
-  --text:#f2f2f3;
-  --muted:#b8b8bf;
-  --line:#26262c;
-  --gold:#f5c46b;
+  --bg:#0a0a0a;
+  --card:#14110d;
+  --text:#f4f2ee;
+  --muted:#c6c0b6;
+  --line:#2a241c;
+  --gold:#d8a24a;
 
-  /* Ek yüzeyler */
-  --surface:#111114;
-  --surface-2:#0f0f12;
-  --line-2:#1f1f25;
+  --surface:#12100e;
+  --surface-2:#0f0d0b;
+  --line-2:#2f281f;
 
-  /* Topbar arka plan */
-  --topbar-bg: rgba(11,11,12,.92);
-  --topbar-bg-compact: rgba(11,11,12,.96);
+  --topbar-bg: rgba(10,10,10,.92);
+  --topbar-bg-compact: rgba(10,10,10,.96);
 
-  /* Hero */
-  --hero-text:#eaeaea;
-  --badge-bg: rgba(255,255,255,0.15);
+  --hero-text:#f0ede7;
+  --badge-bg: rgba(216,162,74,0.18);
 
-  /* Hero karartma (tema ile oynanabilir) */
-  --hero-shade-strong: rgba(0,0,0,.75);
-  --hero-shade-soft: rgba(0,0,0,.20);
+  --hero-shade-strong: rgba(0,0,0,.78);
+  --hero-shade-soft: rgba(0,0,0,.18);
 
-  /* Hero ışık süpürmesi (tema ile oynanabilir) */
-  --hero-sweep-1: rgba(255,215,160,0.06);
-  --hero-sweep-2: rgba(255,215,160,0.16);
+  --hero-sweep-1: rgba(216,162,74,0.07);
+  --hero-sweep-2: rgba(216,162,74,0.16);
 
-  /* Lightbox */
-  --backdrop: rgba(0,0,0,.75);
-  --close-border: rgba(255,255,255,.25);
-  --close-bg: rgba(0,0,0,.45);
+  --backdrop: rgba(0,0,0,.78);
+  --close-border: rgba(255,255,255,.22);
+  --close-bg: rgba(0,0,0,.42);
   --white:#ffffff;
 }
 
