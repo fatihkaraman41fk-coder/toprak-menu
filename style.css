@@ -282,12 +282,16 @@ body{
 }
 
 .lightbox__content{
-  position: relative;                 /* ✅ close buton üstte kalsın */
+  position: relative;                 
   background: #111114;
   border-radius: 18px;
   overflow: hidden;
   border: 1px solid var(--line);
+
+  opacity: 0;
+  transform: translateY(22px) scale(0.94);
 }
+
 
 .lightbox__img{
   display: block;
