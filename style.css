@@ -18,7 +18,7 @@ body{
   position: sticky;
   top: 0;
   z-index: 10;
-  ground: rgba(11,11,12,.92);
+  background: rgba(11,11,12,.92); /* FIX: ground -> background */
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
   padding: 14px 14px 10px;
@@ -121,7 +121,7 @@ body{
   text-align:center;
 }
 
-
+/* HERO */
 .hero{
   position: relative;
   height: 320px;
@@ -134,14 +134,51 @@ body{
   align-items: flex-end;
   padding: 24px;
   z-index: 0;
+
+  /* NEW: performans dostu açılış animasyonu */
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(1.06);
+  animation: heroReveal 1.4s cubic-bezier(0.22,1,0.36,1) forwards;
+  will-change: transform, opacity;
 }
 
+@keyframes heroReveal{
+  to{
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* NEW: ışık sweep katmanı (HTML içine <div class="hero__overlay"></div> eklemelisin) */
+.hero__overlay{
+  position: absolute;
+  inset: 0;
+  z-index: 1;              /* hero::after ile content arasında */
+  pointer-events: none;
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    rgba(255,215,160,0.06) 40%,
+    rgba(255,215,160,0.16) 50%,
+    rgba(255,215,160,0.06) 60%,
+    transparent 100%
+  );
+  transform: translateX(-120%);
+  animation: lightSweep 2.6s ease-out forwards;
+  mix-blend-mode: screen;
+}
+
+@keyframes lightSweep{
+  to{ transform: translateX(120%); }
+}
 
 .hero::after{
   content:"";
   position:absolute;
   inset:0;
   background: linear-gradient(to top, rgba(0,0,0,.75), rgba(0,0,0,.2));
+  z-index: 1; /* NEW: katman kontrolü */
 }
 
 .hero__content{
@@ -175,7 +212,6 @@ body{
   color:#eaeaea;
 }
 
-
 /* Scroll ile küçülen header */
 .topbar{
   transition: padding 220ms ease, background 220ms ease;
@@ -205,7 +241,6 @@ body{
   margin: 0;
   overflow: hidden;
 }
-
 
 /* Lightbox */
 .lightbox{
@@ -242,8 +277,6 @@ body{
   cursor: pointer;
 }
 
-
-
 .lightbox__content{
   background: #111114;
   border-radius: 18px;
@@ -256,18 +289,18 @@ body{
   display:flex;
   justify-content: space-between;
   align-items:center;
-  background: #111114;               /* garanti */
-  color: #ffffff !important;         /* garanti */
+  background: #111114;
+  color: #ffffff !important;
 }
 
 .lightbox__title{
   font-weight: 800;
   font-size: 16px;
-  color: #ffffff !important;         /* garanti */
+  color: #ffffff !important;
 }
 
 .lightbox__price{
   font-weight: 900;
   font-size: 16px;
-  color: #f5c46b !important;         /* garanti */
+  color: #f5c46b !important;
 }
