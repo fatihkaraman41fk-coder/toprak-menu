@@ -1,32 +1,38 @@
-
-
 :root{
-  /* ANA TEMA */
---bg:#1a1412;
---card:#1d1815;
+  /* Ana tema */
+  --bg:#0b0b0c;
+  --card:#131316;
   --text:#f2f2f3;
   --muted:#b8b8bf;
   --line:#26262c;
---gold:#d4a373;
+  --gold:#f5c46b;
 
-  /* EK YÜZEYLER (önceden hard-coded olanlar) */
-  --surface:#111114;        /* tabs + lightbox content/meta */
-  --surface-2:#0f0f12;      /* img placeholder bg */
-  --line-2:#1f1f25;         /* img border */
+  /* Ek yüzeyler */
+  --surface:#111114;
+  --surface-2:#0f0f12;
+  --line-2:#1f1f25;
 
-  /* TOPBAR */
+  /* Topbar arka plan */
   --topbar-bg: rgba(11,11,12,.92);
   --topbar-bg-compact: rgba(11,11,12,.96);
 
-  /* HERO */
-  --hero-text: #eaeaea;
+  /* Hero */
+  --hero-text:#eaeaea;
   --badge-bg: rgba(255,255,255,0.15);
 
-  /* LIGHTBOX */
+  /* Hero karartma (tema ile oynanabilir) */
+  --hero-shade-strong: rgba(0,0,0,.75);
+  --hero-shade-soft: rgba(0,0,0,.20);
+
+  /* Hero ışık süpürmesi (tema ile oynanabilir) */
+  --hero-sweep-1: rgba(255,215,160,0.06);
+  --hero-sweep-2: rgba(255,215,160,0.16);
+
+  /* Lightbox */
   --backdrop: rgba(0,0,0,.75);
   --close-border: rgba(255,255,255,.25);
   --close-bg: rgba(0,0,0,.45);
-  --white: #ffffff;
+  --white:#ffffff;
 }
 
 *{box-sizing:border-box}
@@ -70,9 +76,9 @@ body{
   background: linear-gradient(
     110deg,
     transparent 0%,
-    rgba(255,215,160,0.06) 40%,
-    rgba(255,215,160,0.16) 50%,
-    rgba(255,215,160,0.06) 60%,
+    var(--hero-sweep-1) 40%,
+    var(--hero-sweep-2) 50%,
+    var(--hero-sweep-1) 60%,
     transparent 100%
   );
   transform: translateX(-120%);
@@ -87,7 +93,7 @@ body{
   content:"";
   position:absolute;
   inset:0;
-  background: linear-gradient(to top, rgba(0,0,0,.75), rgba(0,0,0,.2));
+  background: linear-gradient(to top, var(--hero-shade-strong), var(--hero-shade-soft));
   z-index: 2;
 }
 
@@ -244,7 +250,7 @@ body{
   text-align:center;
 }
 
-/* ✅ CUSTOM LIGHTBOX (ANİMASYONLU + katman garanti) */
+/* ✅ CUSTOM LIGHTBOX */
 .lightbox{
   position: fixed;
   inset: 0;
