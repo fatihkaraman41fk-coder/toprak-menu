@@ -99,15 +99,18 @@ body{
 
 /* TOPBAR */
 .topbar{
-  position: sticky;
+  position: fixed;   /* sticky yerine fixed */
   top: 0;
-  z-index: 10;
-  background: rgba(243,244,246,.92);
+  left: 0;
+  right: 0;
+  z-index: 999;      /* her şeyin üstünde kalsın */
+  background: rgba(243,244,246,.96);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
   padding: 14px 14px 10px;
   transition: padding 220ms ease, background 220ms ease;
 }
+
 
 .brand__title{
   font-weight: 800;
