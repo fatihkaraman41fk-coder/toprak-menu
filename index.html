@@ -432,17 +432,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const dlg = document.getElementById('lightbox');
   const dlgImg = document.getElementById('lightboxImg');
 
- function openLightbox(src, alt, title, price) {
+function openLightbox(src, alt, title, price) {
   dlgImg.src = src;
   dlgImg.alt = alt || 'Ürün fotoğrafı';
 
   document.getElementById('lightboxTitle').textContent = title || '';
   document.getElementById('lightboxPrice').textContent = price || '';
 
-if (typeof dlg.showModal === 'function') {
-  dlg.showModal();
-} else {
-  dlg.setAttribute('open', '');
+  try {
+    if (typeof dlg.showModal === 'function') {
+      dlg.showModal();                // modern tarayıcı
+    } else {
+      dlg.setAttribute('open', '');   // fallback
+    }
+  } catch (e) {
+    // ✅ PC'de showModal hata verirse bile kesin aç
+    dlg.setAttribute('open', '');
+  }
+
+  // ✅ animasyonu garanti tetikle
   void dlg.offsetWidth;
 }
 
