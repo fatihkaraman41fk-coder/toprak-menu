@@ -370,4 +370,36 @@ body.has-fixed-topbar{
   100%{ left: 140%; }
 }
 
+/* ✅ HEADER IŞIK ANİMASYONU (geri geldi) */
+
+.hero{
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__overlay{
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    rgba(245,196,107,0.08) 40%,
+    rgba(245,196,107,0.18) 50%,
+    rgba(245,196,107,0.08) 60%,
+    transparent 100%
+  );
+
+  transform: translateX(-120%);
+  animation: headerShine 6s ease-in-out infinite;
+  mix-blend-mode: screen;
+}
+
+@keyframes headerShine{
+  0%{ transform: translateX(-120%); }
+  50%{ transform: translateX(120%); }
+  100%{ transform: translateX(120%); }
+}
 
