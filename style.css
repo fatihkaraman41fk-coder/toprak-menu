@@ -319,3 +319,13 @@ body{
     transform: none !important;
   }
 }
+
+
+/* HERO karartmasını kapat (light tema için) */
+.hero::after{
+  background: none !important;
+}
+.hero__overlay{
+  display: none !important;
+}
+
