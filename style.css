@@ -1,11 +1,11 @@
 :root{
   /* ANA TEMA */
-  --bg:#0b0b0c;
-  --card:#131316;
+--bg:#14110f;
+--card:#1d1815;
   --text:#f2f2f3;
   --muted:#b8b8bf;
   --line:#26262c;
-  --gold:#f5c46b;
+--gold:#d4a373;
 
   /* EK YÜZEYLER (önceden hard-coded olanlar) */
   --surface:#111114;        /* tabs + lightbox content/meta */
