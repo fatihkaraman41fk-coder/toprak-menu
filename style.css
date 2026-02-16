@@ -438,3 +438,15 @@ body.has-fixed-topbar{
     0 0 12px rgba(245,196,107,0.35);
 }
 
+
+#tartine h2{ margin-bottom: 4px; }
+#tartine .section-subtitle{ margin-top: 0; margin-bottom: 12px; }
+
+.section-subtitle{
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.2;
+  opacity: 0.9;
+}
+
+
